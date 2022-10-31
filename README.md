@@ -19,7 +19,7 @@ This is the web service to connect Vietnamese developers in Korea with Korean.
 5. Material UI
 6. Typescript
 
-## Baakend
+## Backend
 
 1. API : AWS Lambda
 2. Database : DynamoDB
