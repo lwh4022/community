@@ -4,26 +4,20 @@ import 'quill/dist/quill.snow.css';
 import './htmlEditor.css';
 
 function HtmlEditor() {
-  const { quill, quillRef, Quill } = useQuill({
+  const { quill, quillRef } = useQuill({
     modules: {
       toolbar: [
         [{ header: [1, 2, 3, false] }],
         ['bold', 'italic', 'strike'], // toggled buttons
         ['blockquote', 'code-block'],
         [{ align: [] }, { list: 'ordered' }, { list: 'bullet' }],
-        [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
         [{ color: [] }, { background: [] }], // dropdown with defaults from theme
         ['link', 'image'],
       ],
     },
+    formats: ['blockquote', 'code-block'],
     placeholder: 'Please input your story',
   });
-
-  if (Quill && !quill) {
-    // For execute this line only once.
-    const KToolbar = Quill.import('modules/toolbar');
-    console.log(KToolbar);
-  }
 
   useEffect(() => {
     if (quill) {

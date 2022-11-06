@@ -1,6 +1,7 @@
 import { ThemeProvider, useTheme } from '@mui/material';
 import HeaderBar from './components/appBar/appBar';
-import HtmlEditor from './components/htmlEditor/htmlEditor';
+import PostWriter from './containers/postWriter';
+import MainRouter from './routers/mainRouter';
 
 function App() {
   const theme = useTheme();
@@ -19,7 +20,7 @@ function App() {
           }}
         >
           <div style={{ maxWidth: '1200px', flexGrow: 1 }}>
-            <HtmlEditor />
+            <MainRouter />
           </div>
         </div>
       </div>
