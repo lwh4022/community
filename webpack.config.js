@@ -1,6 +1,6 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -8,27 +8,27 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/',
-    clean : true,
+    clean: true,
   },
-  mode: "development",
-  devtool : 'inline-source-map',
-  devServer : {
-    port : 9000,
+  mode: 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    port: 9000,
     compress: true,
     historyApiFallback: {
-      index : '/',
-      disableDotRule: true
+      index: '/',
+      disableDotRule: true,
     },
     client: {
       logging: 'error',
-      overlay : {
+      overlay: {
         errors: true,
-        warnings : false,
-      }
-    }
+        warnings: false,
+      },
+    },
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.json', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.json', '.js', '.jsx', '.css'],
   },
   module: {
     rules: [
@@ -37,15 +37,19 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.css/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
     new webpack.ProvidePlugin({
-      "React": "react"
+      React: 'react',
     }),
     new HtmlWebpackPlugin({
-      inject : true,
+      inject: true,
       template: './src/index.html',
     }),
   ],
-}
+};
